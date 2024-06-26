@@ -1,6 +1,57 @@
-import Cards from "@/components/cards";
+import Cards from "@/app/components/cards";
 
 export default function Hero() {
+  const cardElements = [
+    {
+      imgLink:
+        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
+      title: "Shoes!",
+      badge: "New",
+      description: "If a dog chews shoes whose shoes does he choose?",
+      categories: ["Fasion", "Producsts"],
+    },
+    {
+      imgLink:
+        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
+      title: "Shoes!",
+      badge: "New",
+      description: "If a dog chews shoes whose shoes does he choose?",
+      categories: ["Fasion", "Producsts"],
+    },
+    {
+      imgLink:
+        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
+      title: "Shoes!",
+      badge: "New",
+      description: "If a dog chews shoes whose shoes does he choose?",
+      categories: ["Fasion", "Producsts"],
+    },
+    {
+      imgLink:
+        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
+      title: "Shoes!",
+      badge: "New",
+      description: "If a dog chews shoes whose shoes does he choose?",
+      categories: ["Fasion", "Producsts"],
+    },
+    {
+      imgLink:
+        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
+      title: "Shoes!",
+      badge: "New",
+      description: "If a dog chews shoes whose shoes does he choose?",
+      categories: ["Fasion", "Producsts"],
+    },
+    {
+      imgLink:
+        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
+      title: "Shoes!",
+      badge: "New",
+      description: "If a dog chews shoes whose shoes does he choose?",
+      categories: ["Fasion", "Producsts"],
+    },
+  ];
+
   return (
     <main>
       <div>
@@ -63,8 +114,17 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div className="mt-5">
-        <Cards />
+      <div className="mt-5 flex gap-3 flex-wrap">
+        {cardElements.map((elements, index) => (
+          <Cards
+            key={index}
+            imgLink={elements.imgLink}
+            title={elements.title}
+            badge={elements.badge}
+            description={elements.description}
+            categories={elements.categories}
+          />
+        ))}
       </div>
     </main>
   );
