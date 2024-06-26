@@ -17,48 +17,20 @@ export default function Hero() {
 
   const cardElements = [
     {
+      id: 0,
       imgLink:
         "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
+      price: "499",
       title: "Shoes!",
       badge: "New",
       description: "If a dog chews shoes whose shoes does he choose?",
       categories: ["Fasion", "Producsts"],
     },
     {
+      id: 0,
       imgLink:
         "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-      title: "Shoes!",
-      badge: "New",
-      description: "If a dog chews shoes whose shoes does he choose?",
-      categories: ["Fasion", "Producsts"],
-    },
-    {
-      imgLink:
-        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-      title: "Shoes!",
-      badge: "New",
-      description: "If a dog chews shoes whose shoes does he choose?",
-      categories: ["Fasion", "Producsts"],
-    },
-    {
-      imgLink:
-        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-      title: "Shoes!",
-      badge: "New",
-      description: "If a dog chews shoes whose shoes does he choose?",
-      categories: ["Fasion", "Producsts"],
-    },
-    {
-      imgLink:
-        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-      title: "Shoes!",
-      badge: "New",
-      description: "If a dog chews shoes whose shoes does he choose?",
-      categories: ["Fasion", "Producsts"],
-    },
-    {
-      imgLink:
-        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
+      price: "399",
       title: "Shoes!",
       badge: "New",
       description: "If a dog chews shoes whose shoes does he choose?",
@@ -77,6 +49,8 @@ export default function Hero() {
         {cardElements.map((elements, index) => (
           <Cards
             key={index}
+            id={elements.id}
+            price={elements.price}
             imgLink={elements.imgLink}
             title={elements.title}
             badge={elements.badge}

@@ -1,25 +1,31 @@
 interface CardProps {
+  id: number;
   imgLink: string;
   title: string;
+  price: string;
   badge: string;
   description: string;
   categories: string[];
 }
 
 const Card: React.FC<CardProps> = ({
+  id,
   imgLink,
   title,
+  price,
   badge,
   description,
   categories,
 }) => {
   return (
     <main>
-      <div className="card bg-base-100 w-96 shadow-xl grow">
+      <div className="card bg-base-100 w-96 shadow-l grow">
         <figure>
           <img src={imgLink} alt="Shoes" />
         </figure>
+
         <div className="card-body">
+          <h1 className=" font-bold text-[30px]"> ${price}</h1>
           <h2 className="card-title">
             {title}
             <div className="badge badge-secondary">{badge}</div>

@@ -1,17 +1,23 @@
 import Link from "next/link";
 
 export default function Header() {
-  const navLinks = [
-    { name: "Home", href: "" },
-    { name: "Products", href: "" },
-    { name: "Orders", href: "" },
-    { name: "Cart", href: "" },
+  const profileLinks = [
+    { name: "Profile", href: "" },
+    { name: "Settings", href: "" },
+    { name: "Logout", href: "" },
   ];
   return (
     <main>
       <div className="navbar bg-base-100 p-5">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl">daisyUI</a>
+        </div>
+        <div className="form-control">
+          <input
+            type="text"
+            placeholder="Search"
+            className="input input-bordered w-24 md:w-auto"
+          />
         </div>
 
         <div className="flex-none">
@@ -90,20 +96,15 @@ export default function Header() {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-3 pt-5 shadow font-semibold"
             >
-              <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
+              {profileLinks.map((links, index) => (
+                <li key={index} className="">
+                  <Link href={links.href}>
+                    <button>{links.name}</button>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
