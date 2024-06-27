@@ -1,5 +1,6 @@
 import Cards from "@/app/components/cards";
 import Carousel from "@/app/components/carousel";
+import Pagination from "@/app/components/pagination";
 
 export default function Hero() {
   const carouselElements = [
@@ -58,6 +59,9 @@ export default function Hero() {
             categories={elements.categories}
           />
         ))}
+      </div>
+      <div className="flex justify-center items-center mt-10">
+        <Pagination />
       </div>
     </main>
   );

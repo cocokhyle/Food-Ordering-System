@@ -1,6 +1,10 @@
+"use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
+  const router = useRouter();
+
   const profileLinks = [
     { name: "Profile", href: "" },
     { name: "Settings", href: "" },
@@ -73,7 +77,10 @@ export default function Header() {
                 <span className="text-lg font-bold">8 Items</span>
                 <span className="text-info">Subtotal: $999</span>
                 <div className="card-actions">
-                  <button className="btn btn-primary btn-block">
+                  <button
+                    className="btn btn-primary btn-block"
+                    onClick={() => router.push("/cart")}
+                  >
                     View cart
                   </button>
                 </div>
