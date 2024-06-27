@@ -19,7 +19,7 @@ const Card: React.FC<CardProps> = ({
 }) => {
   return (
     <main>
-      <div className="card bg-base-100 w-96 shadow-l grow">
+      <div className="card bg-base-100 w-96 shadow-md grow">
         <figure>
           <img src={imgLink} alt="Shoes" />
         </figure>

@@ -19,7 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header></Header>
+        <div className="sticky top-0 z-10">
+          <Header></Header>
+        </div>
+
         <div className=" mr-5 ml-5">{children}</div>
         <Footer />
       </body>

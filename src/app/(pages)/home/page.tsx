@@ -7,12 +7,12 @@ export default function Hero() {
     {
       id: 1,
       srcLink:
-        "https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg",
+        "https://lh3.googleusercontent.com/d/1Joc1PqpiYqj2VUPR1pjMqmwfRFHbMmhx",
     },
     {
       id: 2,
       srcLink:
-        "https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.jpg",
+        "https://lh3.googleusercontent.com/d/1wQNmoXmI0GNscpuOm2KBndErlbkMej5C",
     },
   ];
 

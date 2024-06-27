@@ -12,9 +12,9 @@ export default function Header() {
   ];
   return (
     <main>
-      <div className="navbar bg-base-100 p-5">
+      <div className="navbar bg-base-100 p-5 shadow-md">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <a className="btn btn-ghost text-xl">Kickz</a>
         </div>
         <div className="form-control">
           <input
