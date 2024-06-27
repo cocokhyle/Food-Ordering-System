@@ -12,7 +12,7 @@ export default function Cart() {
       description: "If a dog chews shoes whose shoes does he choose?",
       price: "499",
       imgLink:
-        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
+        "https://lh3.googleusercontent.com/d/1-Fx4NLnwH_XnrMC9Kbmz2jxk7VpcJc1A",
     },
     {
       id: 1,
@@ -20,7 +20,7 @@ export default function Cart() {
       description: "If a dog chews shoes whose shoes does he choose?",
       price: "399",
       imgLink:
-        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
+        "https://lh3.googleusercontent.com/d/15R-dM0d6MyujbDpXTm0Uuk7igMGFKlLp",
     },
   ];
 
@@ -28,7 +28,7 @@ export default function Cart() {
     <main>
       <div className="h-screen w-full pt-10 flex flex-col items-center">
         <div className="">
-          <div className="flex items-center w-full">
+          <div className="flex items-center w-full mb-5">
             <button
               className="text-[25px] mr-10 btn btn-circle"
               onClick={() => router.push("/")}

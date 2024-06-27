@@ -25,7 +25,7 @@ export default function Hero() {
     {
       id: 0,
       imgLink:
-        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
+        "https://lh3.googleusercontent.com/d/1-Fx4NLnwH_XnrMC9Kbmz2jxk7VpcJc1A",
       price: "499",
       title: "Shoes!",
       badge: "New",
@@ -33,9 +33,9 @@ export default function Hero() {
       categories: ["Fasion", "Producsts"],
     },
     {
-      id: 0,
+      id: 1,
       imgLink:
-        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
+        "https://lh3.googleusercontent.com/d/15R-dM0d6MyujbDpXTm0Uuk7igMGFKlLp",
       price: "399",
       title: "Shoes!",
       badge: "New",
