@@ -14,6 +14,11 @@ export default function Hero() {
       srcLink:
         "https://lh3.googleusercontent.com/d/1wQNmoXmI0GNscpuOm2KBndErlbkMej5C",
     },
+    {
+      id: 3,
+      srcLink:
+        "https://lh3.googleusercontent.com/d/1wQNmoXmI0GNscpuOm2KBndErlbkMej5C",
+    },
   ];
 
   const cardElements = [
