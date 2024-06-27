@@ -17,6 +17,15 @@ const Card: React.FC<CardProps> = ({
   description,
   categories,
 }) => {
+  const getClassName = (badge: string): string => {
+    if (badge === "New") return "badge badge-secondary";
+    if (badge === "Sale") return "badge badge-error";
+    if (badge === "Limited") return "badge badge-warning";
+    return "badge badge-neutral";
+  };
+
+  const className = getClassName(badge);
+
   return (
     <main>
       <div className="card bg-base-100 w-96 shadow-md grow">
@@ -28,7 +37,7 @@ const Card: React.FC<CardProps> = ({
           <h1 className=" font-bold text-[30px]"> ${price}</h1>
           <h2 className="card-title">
             {title}
-            <div className="badge badge-secondary">{badge}</div>
+            <div className={className}>{badge}</div>
           </h2>
           <p>{description}</p>
           <div className="card-actions justify-end">

@@ -49,6 +49,7 @@ export default function Header() {
               tabIndex={0}
               role="button"
               className="btn btn-ghost btn-circle"
+              onClick={() => router.push("/cart")}
             >
               <div className="indicator">
                 <svg
@@ -69,7 +70,7 @@ export default function Header() {
               </div>
             </div>
 
-            <div
+            {/* <div
               tabIndex={0}
               className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow"
             >
@@ -77,15 +78,12 @@ export default function Header() {
                 <span className="text-lg font-bold">8 Items</span>
                 <span className="text-info">Subtotal: $999</span>
                 <div className="card-actions">
-                  <button
-                    className="btn btn-primary btn-block"
-                    onClick={() => router.push("/cart")}
-                  >
+                  <button className="btn btn-primary btn-block">
                     View cart
                   </button>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="dropdown dropdown-end">

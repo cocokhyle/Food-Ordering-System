@@ -26,7 +26,7 @@ export default function Cart() {
 
   return (
     <main>
-      <div className="h-screen w-full pt-10 flex flex-col items-center">
+      <div className="h-auto w-full pt-10 flex flex-col items-center mb-10">
         <div className="">
           <div className="flex items-center w-full mb-5">
             <button
@@ -37,6 +37,19 @@ export default function Cart() {
             </button>
             <div className="divider divider-start w-full">
               <h1 className="font-bold text-[30px]">My Cart</h1>
+            </div>
+          </div>
+          <div className="card lg:card-side bg-base-100 shadow-xl flex w-full p-5 h-fit mt-2 justify-between">
+            <div className="flex gap-3">
+              <input
+                type="checkbox"
+                defaultChecked
+                className="checkbox checkbox-primary"
+              />
+              <h1>Select All (Items: 3)</h1>
+            </div>
+            <div>
+              <button>Delete</button>
             </div>
           </div>
 
@@ -77,10 +90,16 @@ export default function Cart() {
               </div>
             </div>
           ))}
-
-          <div className="mt-10 w-full">
-            <div className="card-actions">
-              <button className="btn  bg-blue-700 text-white">Checkout</button>
+          <div className="flex flex-row items-center justify-between mt-10">
+            <div className="p-3 rounded-md">
+              <h1 className="text-[20px] font-bold">Total: $898</h1>
+            </div>
+            <div className="">
+              <div className="card-actions">
+                <button className="btn  bg-blue-700 text-white">
+                  Checkout
+                </button>
+              </div>
             </div>
           </div>
         </div>
