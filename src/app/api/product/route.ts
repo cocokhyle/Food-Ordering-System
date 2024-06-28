@@ -6,9 +6,3 @@ export async function GET() {
     productDetails,
   });
 }
-
-export async function PUT() {
-  return NextResponse.json({
-    productDetails,
-  });
-}
