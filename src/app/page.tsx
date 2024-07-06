@@ -1,11 +1,11 @@
 import Image from "next/image";
-import Hero from "./(pages)/home/page";
+import Product from "./(pages)/products/page";
 
 export default function Home() {
   return (
     <main className="">
       <div className="p-5">
-        <Hero />
+        <Product />
       </div>
     </main>
   );
