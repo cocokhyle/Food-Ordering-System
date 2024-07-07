@@ -3,7 +3,7 @@ export const productDetails = [
     id: 0,
     imgLink:
       'https://lh3.googleusercontent.com/d/1-Fx4NLnwH_XnrMC9Kbmz2jxk7VpcJc1A',
-    price: '499',
+    price: 499,
     title: 'Shoes!',
     badge: 'Sale',
     description: 'If a dog chews shoes whose shoes does he choose?',
@@ -13,7 +13,7 @@ export const productDetails = [
     id: 1,
     imgLink:
       'https://lh3.googleusercontent.com/d/15R-dM0d6MyujbDpXTm0Uuk7igMGFKlLp',
-    price: '399',
+    price: 399,
     title: 'Shoes!',
     badge: 'New',
     description: 'If a dog chews shoes whose shoes does he choose?',
@@ -23,7 +23,7 @@ export const productDetails = [
     id: 2,
     imgLink:
       'https://lh3.googleusercontent.com/d/15R-dM0d6MyujbDpXTm0Uuk7igMGFKlLp',
-    price: '699',
+    price: 699,
     title: 'Shoes!',
     badge: 'Limited',
     description: 'If a dog chews shoes whose shoes does he choose?',

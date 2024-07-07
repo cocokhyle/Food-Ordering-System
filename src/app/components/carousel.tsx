@@ -1,4 +1,5 @@
-"use client";
+'use client';
+import { useEffect } from 'react';
 interface CarouselElement {
   id: number;
   srcLink: string;
@@ -8,10 +9,16 @@ interface CarouselProps {
   elements: CarouselElement[];
 }
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const Carousel: React.FC<CarouselProps> = ({ elements }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (elements.length === 0) {
+      console.error('No elements provided to Carousel');
+    }
+  }, [elements]);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % elements.length);
@@ -23,20 +30,27 @@ const Carousel: React.FC<CarouselProps> = ({ elements }) => {
     );
   };
 
+  if (elements.length === 0) {
+    return <div></div>;
+  }
+
+  if (!elements[currentIndex]) {
+    return <div>Error: Carousel element at current index is undefined</div>;
+  }
   return (
     <main>
-      <div className="carousel w-full rounded-lg">
-        <div className="carousel-item relative w-full">
+      <div className='carousel w-full rounded-lg'>
+        <div className='carousel-item relative w-full'>
           <img
             src={elements[currentIndex].srcLink}
             alt={`Carousel element ${elements[currentIndex].id}`}
-            className="w-full"
+            className='w-full'
           />
-          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-            <button onClick={prevSlide} className="btn btn-circle">
+          <div className='absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between'>
+            <button onClick={prevSlide} className='btn btn-circle'>
               ❮
             </button>
-            <button onClick={nextSlide} className="btn btn-circle">
+            <button onClick={nextSlide} className='btn btn-circle'>
               ❯
             </button>
           </div>

@@ -7,7 +7,7 @@ interface CardProps {
   id: number;
   imgLink: string;
   title: string;
-  price: string;
+  price: number;
   badge: string;
   description: string;
   categories: string[];

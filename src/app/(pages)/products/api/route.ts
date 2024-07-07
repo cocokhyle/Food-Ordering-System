@@ -1,4 +1,10 @@
-import { productDetails } from '@/app/_lib/productData';
+import { productDetails, productDetailsCarousel } from '@/app/_lib/productData';
+
 export async function GET() {
-  return Response.json(productDetails);
+  const response = {
+    productDetails,
+    productDetailsCarousel,
+  };
+
+  return Response.json(response);
 }

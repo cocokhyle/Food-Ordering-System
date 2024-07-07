@@ -1,83 +1,71 @@
+'use client';
 import Cards from '@/app/components/cards';
 import Carousel from '@/app/components/carousel';
 import Pagination from '@/app/components/pagination';
+import getData from './api/action';
+
+import { useState, useEffect, Suspense } from 'react';
+
+interface CardElement {
+  id: number;
+  price: number;
+  imgLink: string;
+  title: string;
+  badge: string;
+  description: string;
+  categories: string[];
+}
+interface CarouselElement {
+  id: number;
+  srcLink: string;
+}
 
 export default function Product() {
-  const carouselElements = [
-    {
-      id: 1,
-      srcLink:
-        'https://lh3.googleusercontent.com/d/1Joc1PqpiYqj2VUPR1pjMqmwfRFHbMmhx',
-    },
-    {
-      id: 2,
-      srcLink:
-        'https://lh3.googleusercontent.com/d/1wQNmoXmI0GNscpuOm2KBndErlbkMej5C',
-    },
-    {
-      id: 3,
-      srcLink:
-        'https://lh3.googleusercontent.com/d/1wQNmoXmI0GNscpuOm2KBndErlbkMej5C',
-    },
-  ];
+  const [carouselElements, setCarouselElements] = useState<CarouselElement[]>(
+    []
+  );
+  const [cardElements, setCardElements] = useState<CardElement[]>([]);
 
-  const cardElements = [
-    {
-      id: 0,
-      imgLink:
-        'https://lh3.googleusercontent.com/d/1-Fx4NLnwH_XnrMC9Kbmz2jxk7VpcJc1A',
-      price: '499',
-      title: 'Shoes!',
-      badge: 'Sale',
-      description: 'If a dog chews shoes whose shoes does he choose?',
-      categories: ['Fasion', 'Producsts'],
-    },
-    {
-      id: 1,
-      imgLink:
-        'https://lh3.googleusercontent.com/d/15R-dM0d6MyujbDpXTm0Uuk7igMGFKlLp',
-      price: '399',
-      title: 'Shoes!',
-      badge: 'New',
-      description: 'If a dog chews shoes whose shoes does he choose?',
-      categories: ['Fasion', 'Producsts'],
-    },
-    {
-      id: 2,
-      imgLink:
-        'https://lh3.googleusercontent.com/d/15R-dM0d6MyujbDpXTm0Uuk7igMGFKlLp',
-      price: '699',
-      title: 'Shoes!',
-      badge: 'Limited',
-      description: 'If a dog chews shoes whose shoes does he choose?',
-      categories: ['Fasion', 'Producsts'],
-    },
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getData();
+        setCardElements(data.productDetails);
+        setCarouselElements(data.productDetailsCarousel);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <main>
-      <div>
+      <Suspense fallback='Loading...'>
         <div>
-          <Carousel elements={carouselElements} />
+          <div>
+            <Carousel elements={carouselElements} />
+          </div>
         </div>
-      </div>
-      <div className='mt-5 flex gap-3 flex-wrap'>
-        {cardElements.map((elements, index) => (
-          <Cards
-            key={index}
-            id={elements.id}
-            price={elements.price}
-            imgLink={elements.imgLink}
-            title={elements.title}
-            badge={elements.badge}
-            description={elements.description}
-            categories={elements.categories}
-          />
-        ))}
-      </div>
-      <div className='flex justify-center items-center mt-10'>
-        <Pagination />
-      </div>
+        <div className='mt-5 flex gap-3 flex-wrap'>
+          {cardElements.map((element, index) => (
+            <Cards
+              key={index}
+              id={element.id}
+              price={element.price}
+              imgLink={element.imgLink}
+              title={element.title}
+              badge={element.badge}
+              description={element.description}
+              categories={element.categories}
+            />
+          ))}
+        </div>
+        <div className='flex justify-center items-center mt-10'>
+          <Pagination />
+        </div>
+      </Suspense>
     </main>
   );
 }
