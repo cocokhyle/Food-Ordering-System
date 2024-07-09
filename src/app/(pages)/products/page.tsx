@@ -65,6 +65,7 @@ export default function Product() {
         <div className='flex justify-center items-center mt-10'>
           <Pagination />
         </div>
+        <h1>This is just a test</h1>
       </Suspense>
     </main>
   );
