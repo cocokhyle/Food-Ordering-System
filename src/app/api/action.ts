@@ -1,5 +1,9 @@
 export async function getProductDetails() {
-  const response = await fetch('http://localhost:3000/api');
+  const response = await fetch('http://localhost:3000/api', {
+    headers: {
+      'Content-Type': 'product-details',
+    },
+  });
   if (!response.ok) {
     throw new Error('Failed to fetch data');
   }

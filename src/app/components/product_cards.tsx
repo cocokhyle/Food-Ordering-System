@@ -59,18 +59,18 @@ export default function Product_Cards() {
 
   return (
     <main>
-      <div className='grid grid-cols-5 gap-5'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4'>
         {products.map((product) => (
           <div key={product.id}>
             <div
-              className='card bg-base-100 shadow-md flex flex-wrap'
+              className='card bg-base-100 shadow-md '
               onClick={() => openModal(product.id)}>
               <div className=' rounded-lg'>
                 <figure>
                   <img src={product.imgLink} alt='Product Image' />
                 </figure>
                 <div className='card-body'>
-                  <h1 className='font-bold text-[30px]'>${product.price}</h1>
+                  <h1 className='card-title'>${product.price}</h1>
                   <h2 className='card-title'>
                     {product.title}
                     <div className={getClassName(product.badge)}>
