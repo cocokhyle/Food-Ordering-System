@@ -23,6 +23,36 @@ export const productDetails = [
     id: 2,
     imgLink:
       'https://lh3.googleusercontent.com/d/15R-dM0d6MyujbDpXTm0Uuk7igMGFKlLp',
+    price: 399,
+    title: 'Shoes!',
+    badge: 'New',
+    description: 'If a dog chews shoes whose shoes does he choose?',
+    categories: ['Fasion', 'Producsts'],
+  },
+  {
+    id: 3,
+    imgLink:
+      'https://lh3.googleusercontent.com/d/15R-dM0d6MyujbDpXTm0Uuk7igMGFKlLp',
+    price: 699,
+    title: 'Shoes!',
+    badge: 'Limited',
+    description: 'If a dog chews shoes whose shoes does he choose?',
+    categories: ['Fasion', 'Producsts'],
+  },
+  {
+    id: 4,
+    imgLink:
+      'https://lh3.googleusercontent.com/d/15R-dM0d6MyujbDpXTm0Uuk7igMGFKlLp',
+    price: 699,
+    title: 'Shoes!',
+    badge: 'Limited',
+    description: 'If a dog chews shoes whose shoes does he choose?',
+    categories: ['Fasion', 'Producsts'],
+  },
+  {
+    id: 5,
+    imgLink:
+      'https://lh3.googleusercontent.com/d/15R-dM0d6MyujbDpXTm0Uuk7igMGFKlLp',
     price: 699,
     title: 'Shoes!',
     badge: 'Limited',

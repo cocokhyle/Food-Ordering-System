@@ -1,18 +1,32 @@
 'use client';
-import { useEffect } from 'react';
+
+import { useEffect, useState } from 'react';
+import { getProductCarouselDetails } from '../api/action';
+
 interface CarouselElement {
   id: number;
   srcLink: string;
 }
 
-interface CarouselProps {
-  elements: CarouselElement[];
-}
-
-import React, { useState } from 'react';
-
-const Carousel: React.FC<CarouselProps> = ({ elements }) => {
+export default function ProductCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [elements, setElements] = useState<CarouselElement[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const productDetailsCarousel = await getProductCarouselDetails();
+        setElements(productDetailsCarousel);
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  console.log(elements);
 
   useEffect(() => {
     if (elements.length === 0) {
@@ -37,6 +51,11 @@ const Carousel: React.FC<CarouselProps> = ({ elements }) => {
   if (!elements[currentIndex]) {
     return <div>Error: Carousel element at current index is undefined</div>;
   }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <main>
       <div className='carousel w-full rounded-lg'>
@@ -58,6 +77,4 @@ const Carousel: React.FC<CarouselProps> = ({ elements }) => {
       </div>
     </main>
   );
-};
-
-export default Carousel;
+}

@@ -1,9 +1,11 @@
 'use client';
 
-import { useRef } from 'react';
-import Link from 'next/link';
+import { useState, useRef, useEffect } from 'react';
 
-interface CardProps {
+import Link from 'next/link';
+import { getProductDetails } from '../api/action';
+
+interface ProductDetails {
   id: number;
   imgLink: string;
   title: string;
@@ -13,15 +15,28 @@ interface CardProps {
   categories: string[];
 }
 
-const Card: React.FC<CardProps> = ({
-  id,
-  imgLink,
-  title,
-  price,
-  badge,
-  description,
-  categories,
-}) => {
+export default function Product_Cards() {
+  const [products, setProducts] = useState<ProductDetails[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const [productId, setProductId] = useState(0);
+  const modalRef = useRef<HTMLDialogElement>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const productDetails = await getProductDetails(); // Assuming getData returns an object with 'product' property
+        setProducts(productDetails); // Assuming 'product' is a single product object
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching product data:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const getClassName = (badge: string): string => {
     if (badge === 'New') return 'badge badge-secondary';
     if (badge === 'Sale') return 'badge badge-error';
@@ -29,67 +44,84 @@ const Card: React.FC<CardProps> = ({
     return 'badge badge-neutral';
   };
 
-  const className = getClassName(badge);
-
-  const modalRef = useRef<HTMLDialogElement>(null);
-
-  const openModal = () => {
+  const openModal = (productId: number) => {
     if (modalRef.current) {
       modalRef.current.showModal();
+      setProductId(productId);
+      console.log(`Clicked product ID: ${productId}`);
+      // You can use the productId here for any additional logic or state management
     }
   };
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <main>
-      <div className='card bg-base-100 w-96 shadow-md grow' onClick={openModal}>
-        <figure>
-          <img src={imgLink} alt='Shoes' />
-        </figure>
-
-        <div className='card-body'>
-          <h1 className=' font-bold text-[30px]'> ${price}</h1>
-          <h2 className='card-title'>
-            {title}
-            <div className={className}>{badge}</div>
-          </h2>
-          <p>{description}</p>
-          <div className='card-actions justify-end'>
-            {categories.map((cat, index) => (
-              <div key={index}>
-                <div className='badge badge-outline'>{cat}</div>
+      <div className='grid grid-cols-5 gap-5'>
+        {products.map((product) => (
+          <div key={product.id}>
+            <div
+              className='card bg-base-100 shadow-md flex flex-wrap'
+              onClick={() => openModal(product.id)}>
+              <div className=' rounded-lg'>
+                <figure>
+                  <img src={product.imgLink} alt='Product Image' />
+                </figure>
+                <div className='card-body'>
+                  <h1 className='font-bold text-[30px]'>${product.price}</h1>
+                  <h2 className='card-title'>
+                    {product.title}
+                    <div className={getClassName(product.badge)}>
+                      {product.badge}
+                    </div>
+                  </h2>
+                  <p>{product.description}</p>
+                  <div className='card-actions justify-end'>
+                    {product.categories.map((cat, index) => (
+                      <div key={index}>
+                        <div className='badge badge-outline'>{cat}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
+        ))}
       </div>
-
       {/* Dialog */}
-      <dialog ref={modalRef} className='modal '>
-        <div className='modal-box '>
+      <dialog ref={modalRef} className='modal'>
+        <div className='modal-box'>
           <figure>
-            <img src={imgLink} alt='Shoes' />
+            <img src={products[productId].imgLink} alt='Product Image' />
           </figure>
 
           <div className='card-actions justify-end mt-5'>
-            {categories.map((cat, index) => (
+            {products[productId].categories.map((cat, index) => (
               <div key={index}>
                 <div className='badge badge-outline'>{cat}</div>
               </div>
             ))}
           </div>
           <div className='card-body'>
-            <h1 className=' font-bold text-[30px]'> ${price}</h1>
+            <h1 className='font-bold text-[30px]'>
+              ${products[productId].price}
+            </h1>
             <h2 className='card-title'>
-              {title}
-              <div className={className}>{badge}</div>
+              {products[productId].title}
+              <div className={getClassName(products[productId].badge)}>
+                {products[productId].badge}
+              </div>
             </h2>
-            <p>{description}</p>
+            <p>{products[productId].description}</p>
           </div>
           <div className='modal-action'>
             <form method='dialog' className='w-full pl-5 pr-5'>
               <Link
-                href={`products/${id}`}
-                className='btn flex flex-row justify-between  items-center w-full'>
+                href={`/products/${products[productId].id}`}
+                className='btn flex flex-row justify-between items-center w-full'>
                 <div className=''>
                   <div className='rating rating-sm'>
                     <input
@@ -141,11 +173,10 @@ const Card: React.FC<CardProps> = ({
               </Link>
 
               {/* Add to cart btn */}
-
-              <div className='flex justify-center items-center rounded-lg  pl-6 pr-6 pt-3'>
+              <div className='flex justify-center items-center rounded-lg pl-6 pr-6 pt-3'>
                 <div
                   role='button'
-                  className='btn  rounded-lg '
+                  className='btn rounded-lg'
                   // onClick={() => router.push("/cart")}
                 >
                   <div className='indicator'>
@@ -172,5 +203,4 @@ const Card: React.FC<CardProps> = ({
       </dialog>
     </main>
   );
-};
-export default Card;
+}
