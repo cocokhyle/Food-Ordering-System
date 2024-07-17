@@ -122,7 +122,7 @@ export default function Product_Cards() {
               <Link
                 href={`/products/${products[productId].id}`}
                 className='btn flex flex-row justify-between items-center w-full'>
-                <div className=''>
+                <div className='flex gap-3'>
                   <div className='rating rating-sm'>
                     <input
                       type='radio'
@@ -156,7 +156,11 @@ export default function Product_Cards() {
                       disabled
                     />
                   </div>
+                  <div className='justify-end'>
+                    <h1>Rating and Review</h1>
+                  </div>
                 </div>
+
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   fill='none'
