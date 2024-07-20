@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main className=''>
       <Suspense fallback='Loading...'>
-        <div className='grid gap-3'>
+        <div className='grid gap-3 pt-3'>
           <ProductCarousel />
           <Product_Cards />
         </div>

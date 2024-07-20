@@ -10,10 +10,12 @@ export default function ItemCard({
   items,
   hideButton,
   hideCheckbox,
+  imgSize,
 }: {
   items: CardItems[];
   hideButton: boolean;
   hideCheckbox: boolean;
+  imgSize: string;
 }) {
   return (
     <main>
@@ -21,8 +23,70 @@ export default function ItemCard({
         <div
           key={product.id}
           className='card lg:card-side bg-base-100 shadow-xl flex w-fit h-fit mt-2'>
-          <div className='w-[25rem] p-3 flex justify-center items-center'>
-            <img src={product.imgLink} alt='Album' />
+          <div className={`flex flex-col p-3 gap-y-2 w-${imgSize}svh`}>
+            <div className='w-auto  flex'>
+              <img
+                src={product.imgLink}
+                alt='Album'
+                className='object-contain'
+              />
+            </div>
+            <div className='flex items-center justify-between'>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                viewBox='0 0 24 24'
+                strokeWidth={1.5}
+                stroke='currentColor'
+                className='size-6'>
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  d='M15.75 19.5 8.25 12l7.5-7.5'
+                />
+              </svg>
+              <div className='overflow-x-hidden flex-nowrap flex w-max'>
+                <img
+                  src={product.imgLink}
+                  alt='Album'
+                  className='object-contain w-[8svh] flex-shrink-0'
+                />
+                <img
+                  src={product.imgLink}
+                  alt='Album'
+                  className='object-contain w-[8svh]  flex-shrink-0'
+                />
+                <img
+                  src={product.imgLink}
+                  alt='Album'
+                  className='object-contain w-[8svh] flex-shrink-0'
+                />
+                <img
+                  src={product.imgLink}
+                  alt='Album'
+                  className='object-contain w-[8svh] flex-shrink-0'
+                />
+                <img
+                  src={product.imgLink}
+                  alt='Album'
+                  className='object-contain w-[8svh] flex-shrink-0'
+                />
+              </div>
+
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                viewBox='0 0 24 24'
+                strokeWidth={1.5}
+                stroke='currentColor'
+                className='size-6'>
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  d='m8.25 4.5 7.5 7.5-7.5 7.5'
+                />
+              </svg>
+            </div>
           </div>
 
           <div className='card-body '>

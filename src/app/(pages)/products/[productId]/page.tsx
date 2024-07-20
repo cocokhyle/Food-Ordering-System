@@ -59,6 +59,7 @@ export default function ProductDetails({
                 items={products}
                 hideCheckbox={true}
                 hideButton={false}
+                imgSize='40s'
               />
               <div className='card card-compact bg-base-100 p-3 shadow-lg'>
                 <div className='divider divider-start'>

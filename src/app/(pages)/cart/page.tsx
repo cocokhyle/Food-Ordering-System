@@ -18,7 +18,7 @@ export default function Cart() {
       description: 'If a dog chews shoes whose shoes does he choose?',
       price: 399,
       imgLink:
-        'https://lh3.googleusercontent.com/d/15R-dM0d6MyujbDpXTm0Uuk7igMGFKlLp',
+        'https://lh3.googleusercontent.com/d/1XsMNRDcsZHw65PYyZfoZBgh7Ygn36DMG',
     },
   ];
   return (
@@ -43,6 +43,7 @@ export default function Cart() {
             items={productDetails}
             hideButton={true}
             hideCheckbox={false}
+            imgSize='20'
           />
           <div className='flex flex-row items-center justify-between mt-10'>
             <div className='p-3 rounded-md'>

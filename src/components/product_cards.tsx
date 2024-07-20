@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 
 import Link from 'next/link';
 import { getProductDetails } from '../app/api/action';
+import Rating from './rating';
 
 interface ProductDetails {
   id: number;
@@ -13,11 +14,14 @@ interface ProductDetails {
   badge: string;
   description: string;
   categories: string[];
+  rating: number;
+  sales: number;
 }
 
 export default function Product_Cards() {
   const [products, setProducts] = useState<ProductDetails[]>([]);
   const [loading, setLoading] = useState(true);
+  const [rating, setRating] = useState();
 
   const [productId, setProductId] = useState(0);
   const modalRef = useRef<HTMLDialogElement>(null);
@@ -59,31 +63,48 @@ export default function Product_Cards() {
 
   return (
     <main>
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3'>
         {products.map((product) => (
           <div key={product.id}>
             <div
               className='card bg-base-100 shadow-md '
               onClick={() => openModal(product.id)}>
               <div className=' rounded-lg'>
-                <figure>
-                  <img src={product.imgLink} alt='Product Image' />
-                </figure>
-                <div className='card-body'>
-                  <h1 className='card-title'>${product.price}</h1>
+                <div className=' overflow-hidden h-[20svh] bg-white flex justify-center items-center rounded-t-lg'>
+                  <img
+                    src={product.imgLink}
+                    alt='Product Image'
+                    className='h-[25svh]'
+                  />
+                </div>
+                <div className='card-body p-3'>
+                  <div className='flex justify-end'>
+                    {product.categories.map((cat, index) => (
+                      <div key={index}>
+                        <div className='badge badge-outline text-[1svh]'>
+                          {cat}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                   <h2 className='card-title'>
                     {product.title}
                     <div className={getClassName(product.badge)}>
                       {product.badge}
                     </div>
                   </h2>
-                  <p>{product.description}</p>
-                  <div className='card-actions justify-end'>
-                    {product.categories.map((cat, index) => (
-                      <div key={index}>
-                        <div className='badge badge-outline'>{cat}</div>
+                  <h1 className='card-title text-[3svh]'>${product.price}</h1>
+                  <p className='text-[1.5svh]'>{product.description}</p>
+
+                  <div className='flex items-center justify-between'>
+                    {/* Rating Component */}
+                    <div className='flex items-center'>
+                      <div>
+                        <h6 className='text-[1svh]'>{product.sales}k sold</h6>
                       </div>
-                    ))}
+                      <div className='divider divider-horizontal m-0'></div>
+                      <Rating rating={product.rating} />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -93,71 +114,46 @@ export default function Product_Cards() {
       </div>
       {/* Dialog */}
       <dialog ref={modalRef} className='modal'>
-        <div className='modal-box'>
-          <figure>
-            <img src={products[productId].imgLink} alt='Product Image' />
-          </figure>
+        <div className='modal-box w-fit p-3 m-3'>
+          <div className='h-[30svh] flex overflow-hidden items-center justify-center rounded-lg bg-white'>
+            <img
+              src={products[productId].imgLink}
+              alt='Product Image'
+              className='w-[40svh]'
+            />
+          </div>
 
-          <div className='card-actions justify-end mt-5'>
+          <div className='card-actions justify-end mt-3'>
             {products[productId].categories.map((cat, index) => (
               <div key={index}>
-                <div className='badge badge-outline'>{cat}</div>
+                <div className='badge badge-outline text-[1.3svh] gap-2'>
+                  {cat}
+                </div>
               </div>
             ))}
           </div>
-          <div className='card-body'>
-            <h1 className='font-bold text-[30px]'>
-              ${products[productId].price}
-            </h1>
-            <h2 className='card-title'>
+          <div className='card-body pt-0'>
+            <h4 className='card-title'>
               {products[productId].title}
               <div className={getClassName(products[productId].badge)}>
                 {products[productId].badge}
               </div>
-            </h2>
-            <p>{products[productId].description}</p>
+            </h4>
+            <p className='text-[13px]'>{products[productId].description}</p>
+            <h1 className='font-bold text-[5svh]'>
+              ${products[productId].price}
+            </h1>
           </div>
-          <div className='modal-action'>
+          <div className='modal-action m-0 pb-3'>
             <form method='dialog' className='w-full pl-5 pr-5'>
               <Link
                 href={`/products/${products[productId].id}`}
                 className='btn flex flex-row justify-between items-center w-full'>
                 <div className='flex gap-3'>
-                  <div className='rating rating-sm'>
-                    <input
-                      type='radio'
-                      name='rating-5'
-                      className='mask mask-star-2 bg-orange-400'
-                      disabled
-                    />
-                    <input
-                      type='radio'
-                      name='rating-5'
-                      className='mask mask-star-2 bg-orange-400'
-                      disabled
-                    />
-                    <input
-                      type='radio'
-                      name='rating-5'
-                      className='mask mask-star-2 bg-orange-400'
-                      disabled
-                    />
-                    <input
-                      type='radio'
-                      name='rating-5'
-                      className='mask mask-star-2 bg-orange-400'
-                      defaultChecked
-                      disabled
-                    />
-                    <input
-                      type='radio'
-                      name='rating-5'
-                      className='mask mask-star-2 bg-orange-400'
-                      disabled
-                    />
-                  </div>
-                  <div className='justify-end'>
-                    <h1>Rating and Review</h1>
+                  {/* Rating component */}
+                  <Rating rating={products[productId].rating} />
+                  <div className='flex justify-end items-center'>
+                    <p className='text-[1.4svh]'>Rating and reviews</p>
                   </div>
                 </div>
 
