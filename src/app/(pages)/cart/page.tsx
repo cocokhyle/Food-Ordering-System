@@ -43,7 +43,7 @@ export default function Cart() {
             items={productDetails}
             hideButton={true}
             hideCheckbox={false}
-            imgSize='20'
+            imgSize='20svh'
           />
           <div className='flex flex-row items-center justify-between mt-10'>
             <div className='p-3 rounded-md'>

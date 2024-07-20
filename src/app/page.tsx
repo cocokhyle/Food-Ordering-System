@@ -7,14 +7,14 @@ import Pagination from '@/components/pagination';
 
 export default function Home() {
   return (
-    <main className=''>
+    <main>
       <Suspense fallback='Loading...'>
         <div className='grid gap-3 pt-3'>
-          <ProductCarousel />
+          {/* <ProductCarousel /> */}
           <Product_Cards />
         </div>
 
-        <div className='flex justify-center items-center mt-10'>
+        <div className='flex justify-center items-center mt-10 mb-5'>
           <Pagination />
         </div>
       </Suspense>

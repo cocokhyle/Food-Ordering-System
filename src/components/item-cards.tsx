@@ -1,3 +1,5 @@
+import Rating from './rating';
+
 interface CardItems {
   id: number;
   title: string;
@@ -22,16 +24,19 @@ export default function ItemCard({
       {items.map((product) => (
         <div
           key={product.id}
-          className='card lg:card-side bg-base-100 shadow-xl flex w-fit h-fit mt-2'>
-          <div className={`flex flex-col p-3 gap-y-2 w-${imgSize}svh`}>
-            <div className='w-auto  flex'>
+          className='card lg:card-side bg-base-100 shadow-xl flex w-fit mt-2 relative'>
+          <div
+            className={
+              'flex flex-col p-3 gap-y-2 bg-white rounded-l-lg items-center sm:rounded-none sm:rounded-t-lg md:rounded-none md:rounded-l-lg'
+            }>
+            <div className='  flex w-[35svh]  sm:rounded-lg sm:items-center'>
               <img
                 src={product.imgLink}
                 alt='Album'
                 className='object-contain'
               />
             </div>
-            <div className='flex items-center justify-between'>
+            <div className='flex items-center justify-between bg-slate-300 rounded-md'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
@@ -45,7 +50,7 @@ export default function ItemCard({
                   d='M15.75 19.5 8.25 12l7.5-7.5'
                 />
               </svg>
-              <div className='overflow-x-hidden flex-nowrap flex w-max'>
+              <div className='overflow-x-hidden flex-nowrap flex w-max '>
                 <img
                   src={product.imgLink}
                   alt='Album'
@@ -101,6 +106,13 @@ export default function ItemCard({
                   ${product.price}
                 </h2>
               </div>
+              <div className='flex items-center'>
+                <div>
+                  <h6 className='text-[2svh]'>1.5k sold</h6>
+                </div>
+                <div className='divider divider-horizontal m-0'></div>
+                <Rating rating={4} />
+              </div>
               <div className='join'>
                 <button className='join-item btn'>-</button>
                 <button className='join-item btn'>1</button>
@@ -109,7 +121,7 @@ export default function ItemCard({
             </div>
             {/* Add to cart and Buy Button */}
             {!hideButton && (
-              <div className='card-actions '>
+              <div className='card-actions absolute bottom-5'>
                 <div className='flex justify-center items-center rounded-lg pl-6 pr-6 pt-3'>
                   <div
                     role='button'
