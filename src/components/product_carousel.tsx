@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { getProductCarouselDetails } from '../api/action';
+import { getProductCarouselDetails } from '../app/api/action';
 
 interface CarouselElement {
   id: number;

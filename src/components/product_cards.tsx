@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 
 import Link from 'next/link';
-import { getProductDetails } from '../api/action';
+import { getProductDetails } from '../app/api/action';
 
 interface ProductDetails {
   id: number;

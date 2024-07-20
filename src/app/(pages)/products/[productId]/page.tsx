@@ -1,7 +1,8 @@
 'use client';
 import { stringify } from 'querystring';
 import { getFilteredProductDetails } from './api/action';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
+import EasOutButton from '@/components/ease-out_button';
 
 interface ProductDetails {
   id: number;
@@ -52,6 +53,7 @@ export default function ProductDetails({
         {products.map((product) => (
           <div key={product.id}>
             <div className='w-fit flex flex-col gap-3'>
+              <EasOutButton title={'Product Details'} route={'/'} />
               <div className='card card-compact bg-base-100 shadow-lg'>
                 <div className='card-body flex flex-row'>
                   <div className='w-[25rem]'>
